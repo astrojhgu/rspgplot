@@ -188,7 +188,7 @@ pub fn pgconb(a:&[f32], idim:usize, jdim:usize,
     assert_eq!(tr.len(), 6);
     unsafe{
         cpgconb(a.as_ptr(), idim as i32, jdim as i32, 
-            i1 as i32, i2 as i32, j1 as i32, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr(), blank)
+            i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr(), blank)
     }
 }
 
@@ -197,7 +197,7 @@ pub fn pgconf(a:&[f32], idim:usize, jdim:usize,
     assert_eq!(tr.len(), 6);
     unsafe{
         cpgconf(a.as_ptr(), idim as i32, jdim as i32, 
-            i1 as i32, i2 as i32, j1 as i32, j2 as i32, c1, c2, tr.as_ptr());
+            i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c1, c2, tr.as_ptr());
     }
 }
 
@@ -206,7 +206,7 @@ pub fn pgconl(a:&[f32], idim:usize, jdim:usize,
     assert_eq!(tr.len(), 6);
     unsafe{
         cpgconl(a.as_ptr(), idim as i32, jdim as i32, 
-            i1 as i32, i2 as i32, j1 as i32, j2 as i32, c, tr.as_ptr(), CString::new(label).unwrap().as_ptr(), intval as i32, minint as i32)
+            i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c, tr.as_ptr(), CString::new(label).unwrap().as_ptr(), intval as i32, minint as i32)
     }
 }
 
@@ -215,7 +215,7 @@ pub fn pgcons(a:&[f32], idim:usize, jdim:usize,
     assert_eq!(tr.len(), 6);
     unsafe{
         cpgcons(a.as_ptr(), idim as i32, jdim as i32,
-            i1 as i32, i2 as i32, j1 as i32, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr())
+            i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr())
     }
 }
 
@@ -224,7 +224,7 @@ pub fn pgcont(a:&[f32], idim:usize, jdim:usize,
     assert_eq!(tr.len(), 6);
     unsafe{
         cpgcont(a.as_ptr(), idim as i32, jdim as i32, 
-            i1 as i32, i2 as i32, j1 as i32, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr())
+            i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c.as_ptr(), c.len() as i32, tr.as_ptr())
     }
 }
 
@@ -305,7 +305,7 @@ pub fn pgetxt(){
 pub fn pggray(a:&[f32], idim:usize, jdim:usize, i1:usize, i2:usize, j1:usize, j2:usize, fg:f32, bg:f32, tr:&[f32]){
     assert_eq!(tr.len(), 6);
     unsafe{
-        cpggray(a.as_ptr(), idim as i32, jdim as i32, i1 as i32, i2 as i32, j1 as i32, j2 as i32, fg, bg, tr.as_ptr())
+        cpggray(a.as_ptr(), idim as i32, jdim as i32, i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, fg, bg, tr.as_ptr())
     }
 }
 
@@ -331,7 +331,7 @@ pub fn pgiden(){
 pub fn pgimag(a:&[f32], idim:usize, jdim:usize, i1:usize, i2:usize, j1:usize, j2:usize, a1:f32, a2:f32, tr:&[f32]){
     assert_eq!(tr.len(), 6);
     unsafe{
-        cpgimag(a.as_ptr(), idim as i32, jdim as i32, i1 as i32, i2 as i32, j1 as i32, j2 as i32, a1, a2, tr.as_ptr())
+        cpgimag(a.as_ptr(), idim as i32, jdim as i32, i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, a1, a2, tr.as_ptr())
     }
 }
 
@@ -438,7 +438,7 @@ pub fn pgpap(width:f32, aspect:f32){
 
 pub fn pgpixl(ia:&[i32], idim:usize, jdim:usize, i1:usize, i2:usize, j1:usize, j2:usize, x1:f32, x2:f32, y1:f32, y2:f32){
     unsafe{
-        cpgpixl(ia.as_ptr(), idim as i32, jdim as i32, i1 as i32, i2 as i32, j1 as i32, j2 as i32, x1, x2, y1, y2)
+        cpgpixl(ia.as_ptr(), idim as i32, jdim as i32, i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, x1, x2, y1, y2)
     }
 }
 
@@ -881,7 +881,7 @@ pub fn pgvect(a:&[f32], b:&[f32], idim:usize, jdim:usize,
     assert_eq!(a.len(), idim*jdim);
     assert_eq!(tr.len(),6);
     unsafe{
-        cpgvect(a.as_ptr(), b.as_ptr(), idim as i32, jdim as i32, i1 as i32, i2 as i32, j1 as i32, j2 as i32, c, nc, tr.as_ptr(), blank)
+        cpgvect(a.as_ptr(), b.as_ptr(), idim as i32, jdim as i32, i1 as i32+1, i2 as i32, j1 as i32+1, j2 as i32, c, nc, tr.as_ptr(), blank)
     }
 }
 
