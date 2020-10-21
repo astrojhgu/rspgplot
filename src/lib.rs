@@ -290,7 +290,10 @@ pub fn pgerrx(n: usize, x1:&[f32], x2:&[f32], y: &[f32], t:f32){
     }
 }
 
-pub fn pgerry(n:usize, x:&[f32], y1:&[f32], y2:&[f32], t:f32){
+pub fn pgerry(x:&[f32], y1:&[f32], y2:&[f32], t:f32){
+    let n=x.len();
+    assert_eq!(n, y1.len());
+    assert_eq!(n, y2.len());
     unsafe{
         cpgerry(n as i32, x.as_ptr(), y1.as_ptr(), y2.as_ptr(), t)
     }
